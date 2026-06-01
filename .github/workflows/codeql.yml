@@ -86,7 +86,7 @@ jobs:
       if: matrix.build-mode == 'manual'
       shell: bash
       run: |
-        make
+        g++ -O2 -std=c++17 $(find . -name "*.cpp") -o mi_programa
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v4
