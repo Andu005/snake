@@ -54,8 +54,32 @@ jobs:
         # If you are analyzing a compiled language, you can modify the 'build-mode' for that language to customize how
         # your codebase is analyzed, see https://docs.github.com/en/code-security/code-scanning/creating-an-advanced-setup-for-code-scanning/codeql-code-scanning-for-compiled-languages
     steps:
+    steps:
     - name: Checkout repository
       uses: actions/checkout@v4
+      with:
+        submodules: recursive
+      env:
+        FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+    - name: Initialize CodeQL
+      uses: github/codeql-action/init@v4
+      with:
+        languages: ${{ matrix.language }}
+        build-mode: ${{ matrix.build-mode }}
+
+    # Este es el bloque que compilará tu juego en la máquina de Windows
+    - name: Run manual build steps
+      if: matrix.build-mode == 'manual'
+      shell: cmd
+      run: |
+        call "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Auxiliary\Build\vcvars64.bat"
+        cl.exe /EHsc /std:c++17 /Fe:juego_snake.exe AA1_Snake_User\snake\*.cpp
+
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v4
+      with:
+        category: "/language:${{matrix.language}}"
 
     # Add any setup steps before running the `github/codeql-action/init` action.
     # This includes steps like installing compilers or runtimes (`actions/setup-node`
