@@ -45,7 +45,7 @@ jobs:
       run: |
         call "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Auxiliary\Build\vcvars64.bat"
         dir /b /s *.cpp > lista_archivos.txt
-        cl.exe /EHsc /std:c++17 /Fe:juego_snake.exe @lista_archivos.txt
+        cl.exe /EHsc /std:c++17 /D_CRT_SECURE_NO_WARNINGS /Fe:juego_snake.exe @lista_archivos.txt User32.lib
 
     # Ejecuta el análisis de seguridad sobre el código compilado
     - name: Perform CodeQL Analysis
