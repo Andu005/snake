@@ -23,19 +23,17 @@ int longitudCua = 0;
 // VULNERABILIDADES INYECTADAS PARA PROBAR CODEQL
 // ============================================================================
 void MenuDepuracionVulnerable() {
-    // 1. Vulnerabilidad: Función altamente insegura (Buffer Overflow)
-    // CodeQL detectará el uso de 'gets' porque no controla el límite del búfer.
-    char bufferNombre[10];
-    std::cout << "\n[DEBUG] Introduce tu nombre de tester: ";
-    gets(bufferNombre); 
+    // 1. Vulnerabilidad: Desbordamiento de búfer usando 'strcpy' (C++ sí la compila)
+    // CodeQL detectará que copiamos un texto largo en un espacio de solo 5 caracteres.
+    char bufferInseguro[5];
+    const char* textoLargo = "EsteTextoEsDemasiadoLargoYVaAromperLaMemoria";
+    strcpy(bufferInseguro, textoLargo); 
 
     // 2. Vulnerabilidad: Uso de variable local no inicializada
-    // CodeQL detectará que 'multiplicador' se usa en el cálculo sin tener valor.
     int multiplicador;
     if (puntuacioTotal > 100) {
         multiplicador = 2;
     }
-    // Si la puntuación es <= 100, multiplicador tendrá basura de la memoria
     puntuacioTotal = puntuacioTotal * multiplicador; 
 }
 // ============================================================================
