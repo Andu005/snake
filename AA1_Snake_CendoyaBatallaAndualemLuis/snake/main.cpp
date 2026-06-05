@@ -15,8 +15,8 @@ int posicioFruitaX, posicioFruitaY;
 int puntuacioTotal;
 bool jocAcabat = false;
 
-//API-KEY per GitLeaks
-//MYAPP_API_KEY=AIzaSyDbx551123OhRiBuECgnWLSP7byU-CkjzPI
+// Probando gitleaks con un token genérico de AWS
+std::string fake_secret = "AKIAIMNOEXISTE1234567B";
 
 // Variables pel cos de la serp
 int segmentCosX[100], segmentCosY[100];
