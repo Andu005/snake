@@ -16,7 +16,7 @@ int puntuacioTotal;
 bool jocAcabat = false;
 
 //API-KEY per GitLeaks
-MYAPP_API_KEY=AIzaSyDbx551123OhRiBuECgnWLSP7byU-CkjzPI
+//MYAPP_API_KEY=AIzaSyDbx551123OhRiBuECgnWLSP7byU-CkjzPI
 
 // Variables pel cos de la serp
 int segmentCosX[100], segmentCosY[100];
