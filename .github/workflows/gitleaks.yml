@@ -4,8 +4,7 @@ on:
     branches: [ "main" ]
   push:
     branches: [ "main" ]
-    
-# permisos
+
 permissions:
   contents: read
   pull-requests: write
@@ -16,9 +15,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with: { fetch-depth: 0 }
+        with: 
+          # fetch-depth: 0 descarga TODO el historial. 
+          # Pero para asegurarnos de que el PR no se líe, añadimos ref:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha }}
+          
       - uses: gitleaks/gitleaks-action@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          args: detect --verbose --no-git
