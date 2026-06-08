@@ -15,8 +15,8 @@ int posicioFruitaX, posicioFruitaY;
 int puntuacioTotal;
 bool jocAcabat = false;
 
-// Clau de prova
-std::string fake_secret = "AKIAIMNOEXISTE1234567B";
+//Clau de prova
+std::string fake_secret = "AKIAIMNOEXISTE1234567A";
 
 // Variables pel cos de la serp
 int segmentCosX[100], segmentCosY[100];
