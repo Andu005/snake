@@ -16,7 +16,7 @@ int puntuacioTotal;
 bool jocAcabat = false;
 
 // Probando gitleaks con un token genérico de AWS
-std::string fake_secret = "AKIAIMNOEXISTE1234567B";
+std::string fake_secret = "AKIA1234567890ABCD12";
 
 // Variables pel cos de la serp
 int segmentCosX[100], segmentCosY[100];
