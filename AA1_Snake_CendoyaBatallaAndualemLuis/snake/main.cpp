@@ -8,7 +8,7 @@
 
 //Declaro les variables
 
-//Aquesta de eDireccio el que faig es cridar la variable dire y la poso en estat PARAR aixi quan comença el joc esta la serp quieta
+// Aquesta de eDireccio el que faig es cridar la variable dire y la poso en estat PARAR aixi quan comença el joc esta la serp quieta
 eDireccio direccioSnake = PARAR;
 int posicioCapX, posicioCapY;
 int posicioFruitaX, posicioFruitaY;
