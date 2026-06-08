@@ -16,16 +16,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # -------------------------
-      # CHECKOUT
-      # -------------------------
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
       # -------------------------
-      # GITLEAKS (action oficial)
+      # GITLEAKS
       # -------------------------
       - name: Run Gitleaks (action)
         uses: gitleaks/gitleaks-action@v2
@@ -33,13 +30,11 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Run Gitleaks JSON
-        continue-on-error: true
+      - name: Install Gitleaks
         run: |
-          gitleaks detect \
-            --source . \
-            --report-format json \
-            --report-path gitleaks-report.json
+          curl -sSL https://github.com/gitleaks/gitleaks/releases/latest/download/gitleaks-linux-amd64 \
+            -o /usr/local/bin/gitleaks
+          chmod +x /usr/local/bin/gitleaks
 
       - name: Run Gitleaks JSON
         continue-on-error: true
@@ -56,22 +51,16 @@ jobs:
           path: gitleaks-report.json
 
       # -------------------------
-      # CODEQL
+      # CODEQL (sin compilación)
       # -------------------------
       - name: Initialize CodeQL
-        uses: github/codeql-action/init@v3
+        uses: github/codeql-action/init@v4
         with:
           languages: cpp
-
-      - name: Build project
-        run: |
-          mkdir build
-          cd build
-          cmake ..
-          make -j$(nproc)
+          build-mode: none
 
       - name: Analyze with CodeQL
-        uses: github/codeql-action/analyze@v3
+        uses: github/codeql-action/analyze@v4
         with:
           output: codeql-results.sarif
 
