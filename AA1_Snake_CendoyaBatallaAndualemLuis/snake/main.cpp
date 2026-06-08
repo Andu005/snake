@@ -15,7 +15,7 @@ int posicioFruitaX, posicioFruitaY;
 int puntuacioTotal;
 bool jocAcabat = false;
 
-// Probando gitleaks con un token genérico de AWS
+// Clau de prova
 std::string fake_secret = "AKIAIMNOEXISTE1234567B";
 
 // Variables pel cos de la serp
