@@ -7,6 +7,7 @@
 #include <conio.h> //"conio.h" Llegeix la entra de les tecles que realitzi el jugador (awsd, basicament)
 
 //Declaro les variables
+
 //Aquesta de eDireccio el que faig es cridar la variable dire y la poso en estat PARAR aixi quan comença el joc esta la serp quieta
 eDireccio direccioSnake = PARAR;
 int posicioCapX, posicioCapY;
