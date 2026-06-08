@@ -33,14 +33,13 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      # -------------------------
-      # GITLEAKS (JSON manual)
-      # -------------------------
-      - name: Install Gitleaks
+      - name: Run Gitleaks JSON
+        continue-on-error: true
         run: |
-          curl -sSL https://github.com/gitleaks/gitleaks/releases/latest/download/gitleaks-linux-amd64 \
-            -o /usr/local/bin/gitleaks
-          chmod +x /usr/local/bin/gitleaks
+          gitleaks detect \
+            --source . \
+            --report-format json \
+            --report-path gitleaks-report.json
 
       - name: Run Gitleaks JSON
         continue-on-error: true
