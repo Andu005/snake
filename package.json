@@ -1,5 +1,5 @@
 {
-  "dependedencies": {
-    "lodash": "4.17.15"
+  "deps": {
+    "test": "2.1.15"
   }
 }
