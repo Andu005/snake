@@ -1,4 +1,3 @@
-//fake SCA
 {
   "dependedencies": {
     "lodash": "4.17.15"
