@@ -22,9 +22,9 @@ std::string fake_secret = "AKIAIMNOEXISTE1234567B";
 int segmentCosX[100], segmentCosY[100];
 int longitudCua = 0;
 
-// ============================================================================
+// ===========================================================================
 // VULNERABILIDADES INYECTADAS PARA PROBAR CODEQL
-// ============================================================================
+// ===========================================================================
 void MenuDepuracionVulnerable() {
     // 1. Vulnerabilidad: Desbordamiento de búfer usando 'strcpy' (C++ sí la compila)
     // CodeQL detectará que copiamos un texto largo en un espacio de solo 5 caracteres.
