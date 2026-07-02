@@ -20,7 +20,7 @@ jobs:
           fetch-depth: 0
 
       # -------------------------
-      # GITLEAKS
+      # 1. GITLEAKS
       # -------------------------
       - name: Run Gitleaks (action)
         uses: gitleaks/gitleaks-action@v2
@@ -49,7 +49,7 @@ jobs:
           path: gitleaks-report.json
 
       # -------------------------
-      # CODEQL (sin compilación)
+      # 2. CODEQL
       # -------------------------
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v4
@@ -69,7 +69,7 @@ jobs:
           path: codeql-results.sarif
 
       # -------------------------
-      # DEPENDENCY REVIEW
+      # 3. DEPENDENCY REVIEW
       # -------------------------
       - name: Dependency Review (console)
         uses: actions/dependency-review-action@v4
