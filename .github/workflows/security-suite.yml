@@ -25,7 +25,7 @@ jobs:
       # GITLEAKS
       # -------------------------
       - name: Run Gitleaks (action)
-        uses: gitleaks/gitleaks-action@v4
+        uses: gitleaks/gitleaks-action@v2
         continue-on-error: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
